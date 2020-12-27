@@ -27,7 +27,7 @@ with SPD3303X.ethernet_device("192.168.0.4") as dev:
 To connect to a USB device:
 
 ```python
-with SPD3303X.usb_device("192.168.0.4") as dev:
+with SPD3303X.usb_device() as dev:
     dev.CH1.set_voltage(8)
     dev.CH1.set_current(0.75)
     dev.CH1.set_output(True)
