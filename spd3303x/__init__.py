@@ -84,7 +84,9 @@ class USBDevice(SPD3303X):
             if self._visa_rscr is None:
                 raise Exception("No device found")
 
-        self._inst = rm.open_resource(self._visa_rscr, write_termination="\n", read_termination="\n")
+        self._inst = rm.open_resource(self._visa_rscr)
+        self._inst.write_termination="\n"
+        self._inst.read_termination="\n"
         return super().__enter__()
 
     def write(self, cmd: str):
