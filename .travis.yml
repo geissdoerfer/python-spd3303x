@@ -1,0 +1,14 @@
+
+language: python
+python:
+  - "3.6"
+
+script:
+  - python setup.py test
+
+deploy:
+  provider: pypi
+  user: $PYPI_USER
+  password: $PYPI_PASS
+  on:
+    tags: true
