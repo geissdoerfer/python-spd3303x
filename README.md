@@ -3,10 +3,12 @@
 Siglent SPD3303X/-E are programmable lab bench power supplies.
 They can be accessed remotely via a VISA interface.
 
-This packet provides a python API for convenient remote programming of the Device via Ethernet/USB.
+This package provides a Python API for convenient remote programming of the Device via Ethernet/USB.
 Currently, the module supports setting voltage and current limits, measuring voltage and current and enabling or disabling individual outputs.
 
 The module also provides a CLI tool to conveniently control the power supply from the command line.
+
+Also supports the very similar RS PRO RSPD3303X-E.
 
 ## Examples
 

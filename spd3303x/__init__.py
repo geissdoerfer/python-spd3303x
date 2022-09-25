@@ -13,6 +13,20 @@ logger.setLevel(logging.DEBUG)
 
 class SPD3303X(object):
 
+    KNOWN_MODELS = [
+        "SPD3303X",
+        "SPD3303X-E",
+        "SPD3XIDD5R7170",
+    ]
+
+    MANUFACTURERS = {
+        "SPD3303X": "Siglent",
+        "SPD3303X-E": "Siglent",
+        # This one is called RSPD3303X-E by RS PRO.
+        "SPD3XIDD5R7170": "[RS PRO]",
+    }
+
+
     @classmethod
     def usb_device(cls, visa_rscr: str=None):
         return USBDevice(visa_rscr)
@@ -57,9 +71,16 @@ class SPD3303X(object):
         except pyvisa.errors.VisaIOError:
             self._inst.close()
             raise
-        mnf,model,_,_,_ = dsc.split(",")
+        identity_items = dsc.split(",")
+        if len(identity_items) == 3:
+            # RS PRO RSPD3303X-E ?
+            model, _, _= dsc.split(",")
+            mnf = self.MANUFACTURERS.get(model, "[Unknown]")
+        else:
+            # Proper Siglent device probably.
+            mnf, model,_,_,_ = identity_items
         logger.debug(f"Discovered {model} by {mnf}")
-        if model!="SPD3303X":
+        if model not in self.KNOWN_MODELS:
             raise Exception(f"Device {model} not supported")
         self.CH1 = SPD3303X.ControlledChannel(1, self)
         self.CH2 = SPD3303X.ControlledChannel(2, self)
