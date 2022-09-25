@@ -20,13 +20,13 @@ Also supports the very similar RS PRO RSPD3303X-E.
 The package is hosted on PyPI. Install it with
 
 ```
-pip install python-spd3303x
+pip install spd3303x
 ```
 
 or
 
 ```
-pipenv install python-spd3303x
+pipenv install spd3303x
 ```
 
 # Examples
