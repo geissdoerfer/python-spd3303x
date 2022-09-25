@@ -1,16 +1,35 @@
+[![PyPiVersion](https://img.shields.io/pypi/v/spd3303x.svg)](https://pypi.org/project/spd3303x)
+[![Pytest](https://github.com/geissdoerfer/python-spd3303x/actions/workflows/python-tests.yml/badge.svg)](https://github.com/geissdoerfer/python-spd3303x/actions/workflows/python-tests.yml)
+[![CodeStyle](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
+
 # Introduction
 
 Siglent SPD3303X/-E are programmable lab bench power supplies.
 They can be accessed remotely via a VISA interface.
 
-This package provides a Python API for convenient remote programming of the Device via Ethernet/USB.
+This package provides a python API for convenient remote programming of the Device via Ethernet/USB.
 Currently, the module supports setting voltage and current limits, measuring voltage and current and enabling or disabling individual outputs.
 
 The module also provides a CLI tool to conveniently control the power supply from the command line.
 
 Also supports the very similar RS PRO RSPD3303X-E.
 
-## Examples
+# Installation
+
+The package is hosted on PyPI. Install it with
+
+```
+pip install python-spd3303x
+```
+
+or
+
+```
+pipenv install python-spd3303x
+```
+
+# Examples
 
 To connect to a device that is connected to a LAN and accessible under IP `192.168.0.4`:
 
@@ -40,7 +59,7 @@ with SPD3303X.usb_device() as dev:
     dev.CH3.set_output(True)
 ```
 
-## CLI
+# CLI
 
 To configure and enable channel 1 on an ethernet device under IP `192.168.0.4`:
 
