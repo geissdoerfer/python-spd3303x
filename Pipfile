@@ -1,0 +1,23 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pylint = "*"
+black = "*"
+pytest = "*"
+
+[packages]
+spd3303x = {editable = true,path = "."}
+matplotlib = "*"
+numpy = "*"
+pyvisa-py = "*"
+pyusb = "*"
+click = "*"
+python-vxi11 = "*"
+zeroconf = "*"
+psutil = "*"
+
+[pipenv]
+allow_prereleases = true
