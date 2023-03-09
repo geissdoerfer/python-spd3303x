@@ -100,7 +100,7 @@ class USBDevice(SPD3303X):
             logger.debug("Trying to auto-detect USB device")
             resources = rm.list_resources()
             for res_str in resources:
-                if any(dev_spec in res_str for dev_spec in ["SPD3XID", "SPD3ID"]):
+                if "SPD3X" in res_str:
                     self._visa_rscr = res_str
             if self._visa_rscr is None:
                 raise Exception("No device found")
