@@ -13,13 +13,19 @@ logger.setLevel(logging.DEBUG)
 
 
 class SPD3303X(object):
-    KNOWN_MODELS = ["SPD3303X", "SPD3303X-E", "SPD3XIDD5R7170"]
+    KNOWN_MODELS = [
+        "SPD3303X",
+        "SPD3303X-E",
+        "SPD3XIDD5R7170",
+        "NPD3XHBC4R0026",
+    ]
 
     MANUFACTURERS = {
         "SPD3303X": "Siglent",
         "SPD3303X-E": "Siglent",
         # This one is called RSPD3303X-E by RS PRO.
         "SPD3XIDD5R7170": "[RS PRO]",
+        "NPD3XHBC4R0026": "[RS PRO]",
     }
 
     @classmethod
