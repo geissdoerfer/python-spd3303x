@@ -11,13 +11,9 @@ logger = logging.getLogger("spd3303x")
 logger.addHandler(consoleHandler)
 logger.setLevel(logging.DEBUG)
 
-class SPD3303X(object):
 
-    KNOWN_MODELS = [
-        "SPD3303X",
-        "SPD3303X-E",
-        "SPD3XIDD5R7170",
-    ]
+class SPD3303X(object):
+    KNOWN_MODELS = ["SPD3303X", "SPD3303X-E", "SPD3XIDD5R7170"]
 
     MANUFACTURERS = {
         "SPD3303X": "Siglent",
@@ -26,9 +22,8 @@ class SPD3303X(object):
         "SPD3XIDD5R7170": "[RS PRO]",
     }
 
-
     @classmethod
-    def usb_device(cls, visa_rscr: str=None):
+    def usb_device(cls, visa_rscr: str = None):
         return USBDevice(visa_rscr)
 
     @classmethod
@@ -74,11 +69,11 @@ class SPD3303X(object):
         identity_items = dsc.split(",")
         if len(identity_items) == 3:
             # RS PRO RSPD3303X-E ?
-            model, _, _= dsc.split(",")
+            model, _, _ = dsc.split(",")
             mnf = self.MANUFACTURERS.get(model, "[Unknown]")
         else:
             # Proper Siglent device probably.
-            mnf, model,_,_,_ = identity_items
+            mnf, model, _, _, _ = identity_items
         logger.debug(f"Discovered {model} by {mnf}")
         if model not in self.KNOWN_MODELS:
             raise Exception(f"Device {model} not supported")
@@ -90,8 +85,9 @@ class SPD3303X(object):
     def __exit__(self, *args):
         self._inst.close()
 
+
 class USBDevice(SPD3303X):
-    def __init__(self, visa_rscr: str=None):
+    def __init__(self, visa_rscr: str = None):
         self._visa_rscr = visa_rscr
 
     def __enter__(self):
@@ -106,8 +102,8 @@ class USBDevice(SPD3303X):
                 raise Exception("No device found")
 
         self._inst = rm.open_resource(self._visa_rscr)
-        self._inst.write_termination="\n"
-        self._inst.read_termination="\n"
+        self._inst.write_termination = "\n"
+        self._inst.read_termination = "\n"
         return super().__enter__()
 
     def write(self, cmd: str):
@@ -119,6 +115,7 @@ class USBDevice(SPD3303X):
         rep = self._inst.read()
         time.sleep(0.1)
         return rep
+
 
 class EthernetDevice(SPD3303X):
     def __init__(self, host: str):
@@ -140,4 +137,3 @@ class EthernetDevice(SPD3303X):
 
     def query(self, cmd: str):
         return self._inst.ask(cmd)
-

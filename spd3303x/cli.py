@@ -1,4 +1,3 @@
-
 import click
 import logging
 import re
@@ -6,13 +5,12 @@ from spd3303x import SPD3303X
 
 logger = logging.getLogger("spd3303x")
 
+
 @click.group(context_settings=dict(help_option_names=["-h", "--help"], obj={}))
 @click.option("-v", "--verbose", count=True, default=2)
 @click.option("-d", "--device", type=str)
 @click.pass_context
 def cli(ctx, verbose, device):
-
-
     if verbose == 0:
         logger.setLevel(logging.ERROR)
     elif verbose == 1:
