@@ -11,7 +11,7 @@ requirements = ["numpy", "pyvisa-py", "click", "python-vxi11", "zeroconf", "psut
 
 setup(
     name="spd3303x",
-    version="1.0.1",
+    version="1.0.2",
     description="Python API for SigLent SPD3303X",
     long_description=README,
     long_description_content_type="text/markdown",
