@@ -7,7 +7,15 @@ HERE = pathlib.Path(__file__).parent
 # The text of the README file
 README = (HERE / "README.md").read_text()
 
-requirements = ["numpy", "pyvisa-py", "click", "python-vxi11", "zeroconf", "psutil"]
+requirements = [
+    "numpy",
+    "pyvisa-py",
+    "click",
+    "python-vxi11",
+    "zeroconf",
+    "psutil",
+    "standard-xdrlib; python_version>='3.13'"
+]
 
 setup(
     name="spd3303x",
