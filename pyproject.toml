@@ -1,6 +1,6 @@
 [project]
 name = "spd3303x"
-version = "1.0.2"
+version = "1.0.3"
 description = "Python API for SigLent SPD3303X"
 readme = "README.md"
 requires-python = ">=3.10"
