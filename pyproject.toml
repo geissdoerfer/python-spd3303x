@@ -1,2 +1,48 @@
+[project]
+name = "spd3303x"
+version = "1.0.2"
+description = "Python API for SigLent SPD3303X"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "Kai Geissdoerfer", email = "kai.geissdoerfer@tu-dresden.de" },
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "Programming Language :: Python :: 3",
+]
+
+dependencies = [
+    "numpy",
+    "pyvisa-py",
+    "PyUSB",
+    "click",
+    "python-vxi11",
+    "zeroconf",
+    "psutil",
+    "standard-xdrlib; python_version >= '3.13'"
+]
+
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+
+[project.scripts]
+spd-ctrl = "spd3303x.cli:cli"
+
+[tool.setuptools]
+packages = ["spd3303x"]
+
 [tool.black]
 line-length = 120
+
+[project.optional-dependencies]
+test = [
+    "pytest >= 3.9",
+    "pytest-runner"
+]
+
