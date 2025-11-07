@@ -14,6 +14,7 @@ logger.setLevel(logging.DEBUG)
 class SPD3303X(object):
     KNOWN_MODELS = [
         "SPD3303X",
+        "SPD3303C",
         "SPD3303X-E",
         "SPD3XIDD5R7170",
         "NPD3XHBC4R0026",
@@ -21,6 +22,7 @@ class SPD3303X(object):
 
     MANUFACTURERS = {
         "SPD3303X": "Siglent",
+        "SPD3303X-C": "Siglent",
         "SPD3303X-E": "Siglent",
         # This one is called RSPD3303X-E by RS PRO.
         "SPD3XIDD5R7170": "[RS PRO]",
@@ -101,7 +103,7 @@ class USBDevice(SPD3303X):
             logger.debug("Trying to auto-detect USB device")
             resources = rm.list_resources()
             for res_str in resources:
-                if "SPD3XID" in res_str:
+                if "SPD3" in res_str:
                     self._visa_rscr = res_str
             if self._visa_rscr is None:
                 raise Exception("No device found")
