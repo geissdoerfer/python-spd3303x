@@ -5,7 +5,7 @@
 
 # Introduction
 
-Siglent SPD3303X/-E are programmable lab bench power supplies.
+Siglent SPD3303C/X/-E are programmable lab bench power supplies.
 They can be accessed remotely via a VISA interface.
 
 This package provides a python API for convenient remote programming of the Device via Ethernet/USB.
